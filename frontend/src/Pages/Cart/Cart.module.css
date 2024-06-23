@@ -7,7 +7,7 @@
   grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
   color: grey;
   align-items: center;
-  font-size: max(1vw, 12px);
+  font-size: max(1vw, 11px);
 }
 
 .cart_items_item {
@@ -27,6 +27,7 @@
 
 .cart_items_item .cross {
   cursor: pointer;
+  text-align: center;
 }
 
 .cart_bottom {
@@ -103,5 +104,13 @@
 
   .cart_promocode {
     justify-content: flex-end;
+  }
+
+  .cart_items_item img {
+    width: 30px;
+  }
+
+  .quantity {
+    text-align: center;
   }
 }

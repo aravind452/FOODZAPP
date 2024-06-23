@@ -13,7 +13,7 @@ const Cart = () => {
           <p>Items</p>
           <p>Title</p>
           <p>Price</p>
-          <p>quantity</p>
+          <p>Quantity</p>
           <p>Total</p>
           <p>Remove</p>
         </div>
@@ -29,7 +29,7 @@ const Cart = () => {
                   <img src={item.image} />
                   <p>{item.name}</p>
                   <p>${item.price}</p>
-                  <p>{cartItems[item._id]}</p>
+                  <p className={styles.quantity}>{cartItems[item._id]}</p>
                   <p>${item.price * cartItems[item._id]}</p>
                   <p
                     className={styles.cross}
@@ -57,12 +57,13 @@ const Cart = () => {
             <hr />
             <div className={styles.cart_total_details}>
               <p>Delivery Fee</p>
-              <p>${2}</p>
+              <p>${getTotalCartAmount()===0?0:2}</p>
             </div>
             <hr />
             <div className={styles.cart_total_details}>
               <b>Total</b>
-              <b>{getTotalCartAmount() + 2}</b>
+              <b>{getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+
             </div>
           </div>
           <button onClick={() => navigate("/order")}>

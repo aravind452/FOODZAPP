@@ -3,7 +3,6 @@ import styles from "./FoodDisplay.module.css";
 import { StoreContext } from "../../Context/StoreContext";
 import FoodItem from "../FoodItem/FoodItem";
 const FoodDisplay = ({ category }) => {
-  console.log("food display");
   const { food_list } = useContext(StoreContext);
   return (
     <div className={styles.food_display} id="food-display">

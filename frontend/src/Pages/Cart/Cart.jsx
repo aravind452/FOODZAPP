@@ -4,8 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
 const Cart = () => {
   const navigate = useNavigate();
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
-    useContext(StoreContext);
+  const {
+    url,
+    cartItems,
+    food_list,
+    removeFromCart,
+    getTotalCartAmount,
+    token,
+  } = useContext(StoreContext);
   return (
     <div className={styles.cart}>
       <div className={styles.cart_items}>
@@ -23,23 +29,25 @@ const Cart = () => {
           if (cartItems[item._id] > 0) {
             return (
               <div>
-                <div
-                  className={`${styles.cart_items_title} ${styles.cart_items_item}`}
-                >
-                  <img src={item.image} />
-                  <p>{item.name}</p>
-                  <p>${item.price}</p>
-                  <p className={styles.quantity}>{cartItems[item._id]}</p>
-                  <p>${item.price * cartItems[item._id]}</p>
-                  <p
-                    className={styles.cross}
-                    onClick={() => {
-                      removeFromCart(item._id);
-                    }}
+                {
+                  <div
+                    className={`${styles.cart_items_title} ${styles.cart_items_item}`}
                   >
-                    x
-                  </p>
-                </div>
+                    <img src={url + "/images/" + item.image} />
+                    <p>{item.name}</p>
+                    <p>${item.price}</p>
+                    <p className={styles.quantity}>{cartItems[item._id]}</p>
+                    <p>${item.price * cartItems[item._id]}</p>
+                    <p
+                      className={styles.cross}
+                      onClick={() => {
+                        removeFromCart(item._id);
+                      }}
+                    >
+                      x
+                    </p>
+                  </div>
+                }
                 <hr />
               </div>
             );
@@ -57,13 +65,12 @@ const Cart = () => {
             <hr />
             <div className={styles.cart_total_details}>
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount()===0?0:2}</p>
+              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
             </div>
             <hr />
             <div className={styles.cart_total_details}>
               <b>Total</b>
-              <b>{getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
-
+              <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
             </div>
           </div>
           <button onClick={() => navigate("/order")}>

@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./ExploreMenu.module.css";
 import { menu_list } from "../../assets/assets";
 const ExploreMenu = ({ category, setCategory }) => {
-  console.log("explore menu");
   return (
     <div className={styles.explore_menu} id="explore-menu">
       <h1>Explore Menu</h1>

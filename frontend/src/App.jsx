@@ -7,13 +7,12 @@ import Order from "./Pages/PlaceOrder/Order";
 import Footer from "./Components/Footer/Footer";
 import LoginPopup from "./Components/LoginPopup/LoginPopup";
 const App = () => {
-  console.log("app");
   const [showLogin, setShowLogin] = useState(false);
   return (
     <>
-      {showLogin ? <LoginPopup setShowLogin={setShowLogin}/> : <></>}
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
-        <Navbar setShowLogin={setShowLogin}/>
+        <Navbar setShowLogin={setShowLogin} />
 
         <Routes>
           <Route path="/" element={<Home />} />
